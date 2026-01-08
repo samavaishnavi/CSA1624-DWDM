@@ -1,0 +1,33 @@
+# Class intervals (lower and upper limits)
+lower <- c(1, 5, 15, 20, 50, 80)
+upper <- c(5, 15, 20, 50, 80, 110)
+
+# Frequencies
+freq <- c(200, 450, 300, 1500, 700, 44)
+
+# Cumulative frequency
+cf <- cumsum(freq)
+
+# Total frequency
+N <- sum(freq)
+
+# Median position
+median_pos <- N / 2
+
+# Find median class index
+median_class_index <- which(cf >= median_pos)[1]
+
+# Median class details
+L <- lower[median_class_index]            # Lower limit of median class
+cf_prev <- ifelse(median_class_index == 1, 0, cf[median_class_index - 1])
+f <- freq[median_class_index]
+h <- upper[median_class_index] - lower[median_class_index]
+
+# Median formula
+median <- L + ((median_pos - cf_prev) / f) * h
+
+# Print result
+median
+
+
+
